@@ -12,17 +12,17 @@ import java.util.List;
 
 @Entity@Getter
 public class Order {
-    @Id
+    @Id @GeneratedValue
     private Long id;
 
     @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "order", fetch = FetchType.LAZY)
     private Review review;
 
-    @OneToMany
+    @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)

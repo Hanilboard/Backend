@@ -6,10 +6,11 @@ import javax.persistence.*;
 
 @Entity@Getter
 public class OptionParent {
-    @Id
+    @Id @GeneratedValue
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id")
     private Product product;
 
     private String name;
