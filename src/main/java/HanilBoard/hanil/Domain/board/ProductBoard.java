@@ -3,18 +3,16 @@ package HanilBoard.hanil.Domain.board;
 import HanilBoard.hanil.Domain.product.Product;
 import lombok.Getter;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity@Getter
 public class ProductBoard {
-    @Id
+    @Id @GeneratedValue
     private Long id;
 
     @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id")
     private Product product;
 
     private String title;
