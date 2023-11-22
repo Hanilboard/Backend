@@ -4,10 +4,7 @@ import HanilBoard.hanil.Domain.User;
 import HanilBoard.hanil.Domain.product.Product;
 import lombok.Getter;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +13,11 @@ public class OrderItem {
     @Id
     private Long id;
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn
     private Order order;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn
     private Product product;
 
     private String option;

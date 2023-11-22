@@ -4,26 +4,31 @@ import HanilBoard.hanil.Domain.Address;
 import HanilBoard.hanil.Domain.User;
 import HanilBoard.hanil.Domain.board.Review;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Entity@Getter
+@Entity
+@Getter
+@Setter
+@Table(name = "orders")
 public class Order {
     @Id
     private Long id;
 
-    @ManyToOne(fetch= FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn
     private User user;
 
     @OneToOne(fetch = FetchType.LAZY)
     private Review review;
 
-    @OneToMany
+    @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems = new ArrayList<>();
+
 
     @Enumerated(EnumType.STRING)
     private OrderStatus order_status;
@@ -33,7 +38,6 @@ public class Order {
 
     @Embedded
     private Address address;
-
     private Long total_payment;
     private Date date;
     private String recipent_name;

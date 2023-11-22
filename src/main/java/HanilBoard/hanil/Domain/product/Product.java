@@ -24,10 +24,10 @@ public class Product {
     @OneToOne(fetch = FetchType.LAZY)
     private Cart cart;
 
-    @OneToMany
+    @OneToMany(mappedBy = "product")
     private List<OrderItem> orderItems = new ArrayList<>();
 
-    @OneToMany
+    @OneToMany(mappedBy = "product")
     private List<OptionParent> optionParents = new ArrayList<>();
 
     @OneToOne(fetch = FetchType.LAZY)

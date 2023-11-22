@@ -9,14 +9,15 @@ import javax.persistence.*;
 @Entity@Getter
 public class Cart {
 
-    @Id@GeneratedValue
-    @Column(name = "Cart_id")
+    @Id
+    @GeneratedValue
     private Long id;
 
     @OneToOne(fetch = FetchType.LAZY)
     private Product product;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn
     private User user;
 
 

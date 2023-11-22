@@ -12,6 +12,7 @@ public class Review {
     @Id
     private Long id;
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn
     private User user;
     @OneToOne(fetch = FetchType.LAZY)
     private Order order;

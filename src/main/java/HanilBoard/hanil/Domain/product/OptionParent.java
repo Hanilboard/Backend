@@ -10,6 +10,7 @@ public class OptionParent {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn
     private Product product;
 
     private String name;
